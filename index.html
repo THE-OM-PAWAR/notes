@@ -4,38 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="shortcut icon" href="Caramel 1.png" type="image/x-icon" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="modal.css" />
+    <link rel="manifest" href="manifest.json">
     <title>Make note</title>
   </head>
   <body>
     <header>
+      <img src="Caramel 1.png" alt="img" />
       <h1>create Notes</h1>
     </header>
-
-    <div class="conrtainer" id="container">
+    <input type="submit" value="+" id="add" />
+    <div class="conrtainer" onchange="check()"  id="container">
       <div id="allNote">
-        <!-- <div class="note">
-          <div class="title"><h3>dumy Title</h3></div>
-          <div class="written"> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, rerum?</p> <div class="delete">om</div> </div>
-        </div>
-        <div class="note">
-          <div class="title"><h3>dumy Title</h3></div>
-          <div class="written"> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, rerum?</p> </div>
-        </div>
-        <div class="note">
-          <div class="title"><h3>dumy Title</h3></div>
-          <div class="written"> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, rerum?</p> </div>
-        </div>
-        <div class="note">
-          <div class="title"><h3>dumy Title</h3></div>
-          <div class="written"> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, rerum?</p> </div>
-        </div>
-        <div class="note">
-          <div class="title"><h3>dumy Title</h3></div>
-          <div class="written"> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, rerum?</p> </div>
-        </div> -->
+        
+
       </div>
-      <div id="main2" hidden>
+
+      <div id="main2" class="main" hidden>
         <div class="notePanel2 notePanel" id="notePanel2">
           <div id="buttons">
             <button id="cnlBtn2">
@@ -64,13 +52,13 @@
               </svg>
             </button>
           </div>
-          <p id="times" >time</p>
+          <p id="times">time</p>
           <h3 class="Nname">title</h3>
-          <p class="notepera" contenteditable="true" ></p>
+          <p class="notepera" contenteditable="true"></p>
         </div>
       </div>
 
-      <div id="main" hidden>
+      <div id="main" class="main" hidden>
         <div class="notePanel" id="notePanel">
           <div id="buttons">
             <button id="cnlBtn">
@@ -99,7 +87,6 @@
               </svg>
             </button>
           </div>
-
           <input type="text" name="noteName" id="Nname" placeholder="Title" />
           <textarea
             name="content"
@@ -110,10 +97,13 @@
           ></textarea>
         </div>
       </div>
-
-      <input type="submit" value="+" id="add" />
+      <div class="main" id="main__" hidden >
+          Add Some <br> Notes
+      </div>
     </div>
+
+
+    <script src="modal.js"></script>
     <script src="note .js"></script>
-    <!-- <script src="note2.js"></script> -->
   </body>
 </html>
