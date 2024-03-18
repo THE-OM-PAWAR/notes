@@ -381,12 +381,12 @@ button {
 }
 @media screen and (max-width: 1000px) {
   html {
-    font-size: 9px;
+    font-size: 10px;
   }
 }
 @media screen and (max-width: 700px) {
   html {
-    font-size: 8px;
+    font-size: 9.5px;
   }
 }
 
@@ -396,7 +396,7 @@ button {
     display: none;
   }
   html {
-    font-size: 7px;
+    font-size: 9px;
   }
 
   header {
@@ -468,37 +468,33 @@ button {
     text-align: left;
   }
   #Nname {
-    font-size: 2rem;
+    font-size: 2.4rem;
     outline: none;
     border: none;
     margin: 3rem 3rem 3rem 3rem;
-    letter-spacing: 0.2rem;
+    font-style: normal;
+    letter-spacing: 0.01;
   }
   .Nname {
-    font-size: 2rem;
+    font-size: 2.4rem;
     outline: none;
     border: none;
     margin: 3rem 3rem 3rem 3rem;
-    /* letter-spacing: .2rem; */
   }
   textarea {
     resize: none;
     border: none;
     outline: none;
     margin: 1rem 3.2rem;
-    /* letter-spacing: .0005rem;
-    word-spacing: .001rem; */
+    font-size: 1.8rem;
   }
-  /* #createbtn , #cnlbtn{
-  
-  } */
   .svg {
-    width: 1.5rem;
-    margin: 0;
     fill: rgb(0, 0, 0);
+    /* height: 100%; */
+    width: 100%;
   }
   #buttons {
-    margin: 2rem 2rem 2rem 2rem;
+    margin: 1REM;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -507,6 +503,9 @@ button {
   button {
     background-color: white;
     border: none;
+    height: 3rem;
+    width: 2.6rem;
+    margin: .5rem 1rem;
   }
 
 
@@ -517,20 +516,19 @@ button {
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: row;
-    width: 51rem;
+    width: 100vw;
     margin: auto;
   }
   .note {
-      min-width: 22rem;
-      width: 23rem;
-      height: 26rem;
+      width: 45%;
+      height: 50vw;
       overflow: hidden;
       background: rgb(255, 255, 255);
-      margin: 1rem;
       display: flex;
       flex-direction: column;
       align-items: baseline;
       border-radius: 0.5rem;
+
   }
   #alerts {
     position: static;
@@ -551,18 +549,20 @@ button {
     align-items: stretch;
     justify-content: space-between;
     position: relative;
-    width: 100%;
+    width: 95%;
     height: 30%;
     overflow: hidden;
     text-overflow: ellipsis;
+    flex-wrap: nowrap;
   }
  
   .written {
     margin: 0.6rem;
+    font-size: 1.4rem;
   }
   .notepera {
     /* margin: 1rem 3.2rem; */
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     outline: none;
   }
 
