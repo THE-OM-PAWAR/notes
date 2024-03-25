@@ -25,20 +25,20 @@
   color: #000000;
   font-family: Narin;
   font-weight: 800;
-  font-size: 3.5rem;
+  font-size: 2.6rem;
 }
 .Modal > p {
   color: #000000;
   font-family: nunito;
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 .Modal button {
   color: #ffffff;
   font-family: Narin;
   font-weight: 800;
-  font-size: 2.4rem;
-  padding: 1rem 2.5rem;
+  font-size: 2.2rem;
+  padding: 1rem 2rem;
   outline: none ;
   border: none;
   border-radius: 10rem;
