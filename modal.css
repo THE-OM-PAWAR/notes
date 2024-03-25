@@ -46,8 +46,8 @@
   background-color: #000000;
 }
 #modal_type1 > button{
-    align-self: flex-end;
-    height: 5rem;
+  align-self: flex-end;
+    /* height: 5rem; */
 }
 #modal_type2{
     display: flex;
@@ -55,5 +55,6 @@
     align-items: center;
     height: max-content;
     justify-content: space-between;
+    height: auto;
     /* transform: translateY(60rem); opacity: 0; */
 }
