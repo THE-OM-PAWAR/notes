@@ -43,9 +43,7 @@ function modal(
     modal_type1.innerHTML = `     
     <h3>${head}</h3>
     <p>${discription}</p>
-    <button  onclick="closes2(this , ${func}(${
-      param1 + "," + param2 + ", " + param3
-    }))" >${BTN_name}</button>
+    <button onclick="closes2(this, ${func}('${param1}', '${param2}', '${param3}'))">${BTN_name}</button>
     `;
 
     setTimeout(() => {
@@ -64,9 +62,7 @@ function modal(
     modal_type2.id = "modal_type2";
     modal_type2.classList.add("Modal");
 
-    modal_type2.innerHTML = `<p>${discription}</p><button onclick="closes2(this , ${func}(${
-      param1 + "," + param2 + ", " + param3
-    }))" >${BTN_name}</button>`;
+    modal_type2.innerHTML = `<p>${discription}</p><button onclick="closes2(this); if(window['${func}']) window['${func}']('${param1}', '${param2}', '${param3}')" >${BTN_name}</button>`;
     setTimeout(() => {
       modal_box.appendChild(modal_type2);
     }, 100);
