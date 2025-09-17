@@ -1,585 +1,540 @@
+/* CSS Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  /* Light Theme Colors */
+  --primary-color: #eab32c;
+  --primary-hover: #d9a127;
+  --background-color: #f3f1eb;
+  --surface-color: #ffffff;
+  --text-primary: #2c2c2c;
+  --text-secondary: #6b6b6b;
+  --border-color: #e0e0e0;
+  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --border-radius: 12px;
+  --transition: all 0.3s ease;
+  
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-xs: 1.2rem;
+  --font-size-sm: 1.4rem;
+  --font-size-base: 1.6rem;
+  --font-size-lg: 2.0rem;
+  --font-size-xl: 2.4rem;
+  --font-size-2xl: 3.2rem;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --background-color: #1a1a1a;
+  --surface-color: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --border-color: #404040;
+  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
 html {
   font-size: 10px;
 }
+
 body {
-  background-color: rgb(241, 241, 241);
-  display: initial;
-  font-family: poppins;
+  background-color: var(--background-color);
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  line-height: 1.6;
 }
+
+/* Header Styles */
 header {
   position: fixed;
-  padding: 0.5rem;
-  text-align: center;
-  width: 100vw;
-  height: auto;
-  font-family: poppins;
-  font-weight: 900;
-  text-transform: capitalize;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.2rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  color: rgb(15, 15, 15);
-  background-color: rgba(255, 255, 255, 0.842);
+  justify-content: center;
+  gap: 1.2rem;
+  box-shadow: var(--shadow-light);
 }
+
 header img {
-  margin: 1rem;
-  height: 4rem;
+  height: 3.6rem;
+  width: 3.6rem;
+  border-radius: 8px;
 }
 
 h1 {
-  font-size: 2.5rem;
-  font-weight: 600;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  flex: 1;
+  text-align: center;
 }
 
+/* Theme Toggle Button */
+#themeToggle {
+  width: 4rem;
+  height: 4rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 2rem;
+}
+
+#themeToggle:hover {
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+.theme-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Add Button Styles */
 #add {
   position: fixed;
-  text-align: center;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  width: 7rem;
-  height: 7rem;
-  font-weight: 100;
-  font-size: 6rem;
-  border: 0;
+  right: 2rem;
+  bottom: 2rem;
+  width: 6rem;
+  height: 6rem;
+  border: none;
   border-radius: 50%;
+  background: var(--primary-color);
   color: white;
-  background-color: #eab32c;
+  font-size: 2.4rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-medium);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.conrtainer {
-  width: max-content;
-  width: 100vw;
+#add:hover {
+  background: var(--primary-hover);
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(234, 179, 44, 0.4);
+}
+
+#add:active {
+  transform: scale(0.95);
+}
+
+#add span {
+  font-weight: 300;
+  line-height: 1;
+}
+
+/* Main Layout */
+main {
   min-height: 100vh;
-  padding-top: 7rem;
-  background-color: #f3f1eb;
+  padding-top: 8rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
   display: flex;
-  flex-direction: row;
+  gap: 2rem;
   align-items: flex-start;
   justify-content: center;
-  margin: auto;
 }
+
+/* Scrollbar Styles */
 *::-webkit-scrollbar {
-  display: none;
+  width: 6px;
 }
-#allNote {
-  /* background-color: rgb(209, 61, 61); */
-  /* padding: 1px; */
-  display: flex;
-  align-items: flex-start;
-  justify-content: right;
-  align-content: flex-start;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 56rem;
-  min-height: 2rem;
-  height: calc(100vh - 7rem);
-  overflow-y: scroll;
-  transition: .3s;
+
+*::-webkit-scrollbar-track {
   background: transparent;
 }
+
+*::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Search Bar */
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 3rem;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 1.2rem 1.6rem 1.2rem 4.8rem;
+  border: 2px solid var(--border-color);
+  border-radius: 25px;
+  font-size: var(--font-size-base);
+  background: var(--surface-color);
+  color: var(--text-primary);
+  transition: var(--transition);
+  font-family: var(--font-family);
+}
+
+.search-container input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(234, 179, 44, 0.1);
+}
+
+.search-container input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2rem;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+/* Notes Grid */
+#allNote {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 800px;
+  min-height: 200px;
+}
+
+/* Note Card Styles */
 .note {
-  width: 26rem;
-  /* max-width: 30rem; */
-  height: 30rem;
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  transition: var(--transition);
   overflow: hidden;
-  background: rgb(255, 255, 255);
-  margin: 1rem;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  min-height: 200px;
+  max-height: 300px;
   display: flex;
   flex-direction: column;
-  align-items: baseline;
-  border-radius: 0.5rem;
-  transition: .3s;
 }
+
+.note:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
 .title {
-  height: 20%;
-  overflow: hidden;
-  width: 100%;
+  padding: 1.6rem 1.6rem 0.8rem;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  padding: 1.4rem;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(234, 179, 44, 0.05);
 }
-.title > h2 {
-  height: 4.4rem;
-  width: 80%;
-  line-height: 2.2rem;
-  font-size: 2rem;
+
+.title h2 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-#installApp{
-  POSITION: ABSOLUTE;
-  top: 20rem;
-  font-size: 3rem;
-  padding: 1rem;
-  color: white;
-  background: black;
-}
-.delete {
-  height: 4rem;
-  width: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.8rem;
-  border-radius: 0.5rem;
-  transition: 0.3s;
-}
-.delete:hover {
-  background-color: #fff5db;
-}
-.delete svg {
-  height: 100%;
-  width: 100%;
-  /* background-color: white; */
-}
-.written {
-  width: 100%;
-  height: 80%;
-  overflow: hidden;
-  padding: 1.4rem;
-}
-.writeUP {
-  font-size: 1.6rem;
-  line-height: 2rem;
-  font-family: nunito;
-  overflow: hidden;
-  margin-bottom: 1rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 10;
-  -webkit-box-orient: vertical;
-  height: 95%;
-}
-
-.main {
-  /* background-color: rgb(78, 209, 61); */
-  background: #fff;
-  margin: 1rem;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  flex-grow: 1;
-  height: calc(100vh - 9rem);
-  max-width: 86rem;
-}
-
-#main__{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 4rem;
-  font-weight: 800;
-  color: #eab42c94;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.notePanel2 {
-  text-align: left;
-}
-#Nname {
-  font-size: 2rem;
-  outline: none;
-  border: none;
-  margin: 3rem 3rem 3rem 3rem;
-  letter-spacing: 0.2rem;
-}
-.Nname {
-  font-size: 2rem;
-  outline: none;
-  border: none;
-  margin: 3rem 3rem 3rem 3rem;
-  /* letter-spacing: .2rem; */
-}
-textarea {
-  resize: none;
-  border: none;
-  outline: none;
-  margin: 1rem 3.2rem;
-  /* letter-spacing: .0005rem;
-  word-spacing: .001rem; */
-}
-/* #createbtn , #cnlbtn{
-
-} */
-.svg {
-  width: 1.5rem;
+  flex: 1;
   margin: 0;
-  fill: rgb(0, 0, 0);
 }
-#buttons {
-  margin: 2rem 2rem 2rem 2rem;
+
+.delete {
+  width: 3.2rem;
+  height: 3.2rem;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-button {
-  background-color: white;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: var(--transition);
+  cursor: pointer;
   border: none;
+  background: transparent;
+  flex-shrink: 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.notePanel {
-  text-align: left;
+.delete:hover {
+  background-color: rgba(239, 68, 68, 0.1);
 }
+
+.delete svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.delete:hover svg {
+  fill: #ef4444;
+}
+
+.written {
+  padding: 1.6rem;
+  flex: 1;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.written .content {
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+
+.timestamp {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  margin-bottom: 0.8rem;
+}
+
+/* Panel Styles */
+.main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 2rem;
+}
+
 .notePanel {
-  text-align: center;
-  background-color: rgb(255, 255, 255);
-  margin: auto;
-  z-index: 99;
-  border: 0;
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-medium);
+  width: 100%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  
-}
-.Nname {
-  font-size: 2rem;
-  outline: none;
-  border: none;
-  /* margin: 3rem 3rem 3rem 3rem; */
-  /* padding: 2rem; */
-  font-family: nunito;
-  text-align: left;
-  letter-spacing: 0;
-  font-size: 2.4rem;
-  font-weight: 800;
-}
-#Nname {
-  font-size: 2rem;
-  outline: none;
-  border: none;
-  /* margin: 3rem 3rem 3rem 3rem; */
-  /* padding: 2rem; */
-  font-family: nunito;
-  text-align: left;
-  letter-spacing: 0;
-  font-size: 2.4rem;
-  font-weight: 800;
-}
-.notepera {
-  font-size: 1.6rem;
-  outline: none;
-  padding: 3rem;
-text-align: left;
-}
-#times {
-  background-color: rgba(255, 213, 0, 0.24);
-  padding: 0.5rem 1rem;
-  width: max-content;
-  margin: 0.5rem 3rem;
-  border-radius: 2rem;
-  color: rgb(236, 197, 38);
-  font-size: 1.1rem;
 }
 
-textarea {
+/* Empty State */
+.empty-state {
+  position: static !important;
+  background: transparent !important;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.empty-content h2 {
+  font-size: var(--font-size-2xl);
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.empty-content p {
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+/* Form Styles */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 2rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.button-group button {
+  width: 4rem;
+  height: 4rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-group button:hover {
+  background: var(--border-color);
+}
+
+.button-group .svg {
+  width: 2rem;
+  height: 2rem;
+  fill: var(--text-secondary);
+}
+
+#Nname, .Nname {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  outline: none;
+  border: none;
+  padding: 2rem 2rem 1rem;
+  background: transparent;
+  color: var(--text-primary);
+  width: 100%;
+}
+
+#Nname::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+textarea, .notepera {
   resize: none;
   border: none;
   outline: none;
-  margin: 1rem 3.2rem;
-  font-family: nunito;
-  font-size: 1.6rem;
-  letter-spacing: 0;
+  padding: 1rem 2rem 2rem;
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: transparent;
+  flex: 1;
+  min-height: 200px;
+  font-family: var(--font-family);
 }
 
-.svg {
-  width: 1.5rem;
-  margin: 0;
-  fill: rgb(0, 0, 0);
-}
-#buttons {
-  margin: 2rem 2rem 2rem 2rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
 }
 
-button {
-  background-color: white;
-  border: none;
+/* Timestamp Styles */
+#times {
+  background: rgba(234, 179, 44, 0.15);
+  color: var(--primary-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  margin: 0.5rem 2rem 1rem;
+  width: fit-content;
 }
 
+/* Alert Styles */
+.alert-message {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin: 0 2rem 1rem;
+  font-size: var(--font-size-sm);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
 
-
-
-
-
-
-
-
-
-
-/* MAIN CHANGE HERE */
-@media screen and (max-width: 1400px) {
-
-  .main {
-    max-width: 62rem;
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 1000px;
   }
+  
   #allNote {
-    width: 35%;
-    min-width: 34%;
-  }
-}
-@media screen and (max-width: 1000px) {
-  html {
-    font-size: 10px;
-  }
-}
-@media screen and (max-width: 700px) {
-  html {
-    font-size: 9.5px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 }
 
-/* MAIN CHANGE HERE */
-@media screen and (max-width: 560px) {
-  #main__{
-    display: none;
+@media (max-width: 768px) {
+  main {
+    padding-top: 7rem;
   }
-  html {
-    font-size: 9px;
-  }
-
+  
   header {
-    background-color: rgb(255, 255, 255);
-    color: rgb(15, 15, 15);
-    position: fixed;
-    padding: 0.5rem;
-    text-align: center;
-    width: 100vw;
-    height: max-content;
-    font-family: poppins;
-    font-weight: 900;
-    text-transform: capitalize;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
-    z-index: 99;
+    padding: 1rem 1.5rem;
   }
-  header div {
-    margin: 1rem;
-    height: 4rem;
+  
+  .container {
+    padding: 1rem;
+    flex-direction: column;
   }
-  header div > img {
-    height: 100%;
+  
+  #allNote {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
   }
-
-  h1 {
-    font-size: 3rem;
-    font-weight: 600;
+  
+  .main {
+    padding: 1rem;
   }
-  .conrtainer {
-    width: 100vw;
-    height: auto;
+  
+  .notePanel {
+    max-width: 100%;
+    margin: 0;
   }
+  
   #add {
-    position: fixed;
-    text-align: center;
+    width: 5.6rem;
+    height: 5.6rem;
     right: 1.5rem;
     bottom: 1.5rem;
-    width: 7rem;
-    height: 7rem;
-    font-weight: 100;
-    font-size: 6rem;
-    border: 0;
-    border-radius: 50%;
-    color: white;
-    background-color: #eab32c;
   }
-  .notePanel {
-    text-align: center;
-    background-color: rgb(255, 255, 255);
-    position: fixed;
-    /* width: 100vw; */
-    /* height:; */
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    z-index: 99;
-    border: 0;
-    display: flex;
-    flex-direction: column;
-    /* padding: 5rem 5rem; */
-  }
-  .notePanel2 {
-    text-align: left;
-  }
-  #Nname {
-    font-size: 2.4rem;
-    outline: none;
-    border: none;
-    margin: 3rem 3rem 3rem 3rem;
-    font-style: normal;
-    letter-spacing: 0.01;
-  }
-  .Nname {
-    font-size: 2.4rem;
-    outline: none;
-    border: none;
-    margin: 3rem 3rem 3rem 3rem;
-  }
-  textarea {
-    resize: none;
-    border: none;
-    outline: none;
-    margin: 1rem 3.2rem;
-    font-size: 1.8rem;
-  }
-  .svg {
-    fill: rgb(0, 0, 0);
-    /* height: 100%; */
-    width: 100%;
-  }
-  #buttons {
-    margin: 1REM;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  button {
-    background-color: white;
-    border: none;
-    height: 3rem;
-    width: 2.6rem;
-    margin: .5rem 1rem;
-  }
-
-
-
-  #allNote {
-    padding: 1px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: row;
-    width: 100vw;
-    margin: auto;
-  }
-  .note {
-      width: 45%;
-      height: 50vw;
-      overflow: hidden;
-      background: rgb(255, 255, 255);
-      display: flex;
-      flex-direction: column;
-      align-items: baseline;
-      border-radius: 0.5rem;
-
-  }
-  #alerts {
-    position: static;
-    background-color: rgba(255, 213, 0, 0.24);
-    padding: 0.5rem 1rem;
-    width: max-content;
-    margin: auto;
-    border-radius: 2rem;
-    color: rgb(236, 197, 38);
-    font-size: 1.1rem;
-  }
-  .writeUP {
-    -webkit-line-clamp: 7;
-  }
-  .title {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: space-between;
-    position: relative;
-    width: 95%;
-    height: 30%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex-wrap: nowrap;
-  }
- 
-  .written {
-    margin: 0.6rem;
-    font-size: 1.4rem;
-  }
-  .notepera {
-    /* margin: 1rem 3.2rem; */
-    font-size: 1.8rem;
-    outline: none;
-  }
-
-  #times {
-    /* position: static; */
-    background-color: rgba(255, 213, 0, 0.24);
-    padding: 0.5rem 1rem;
-    width: max-content;
-    margin: 0.5rem 3rem;
-    border-radius: 2rem;
-    color: rgb(236, 197, 38);
-    font-size: 1.1rem;
+  
+  #add span {
+    font-size: 2rem;
   }
 }
 
-@media screen and (max-width: 360px) {
-  html {
-    font-size: 8.7px;
+@media (max-width: 480px) {
+  #allNote {
+    grid-template-columns: 1fr;
+  }
+  
+  .note {
+    min-height: 180px;
+  }
+  
+  .title h2 {
+    font-size: var(--font-size-base);
+  }
+  
+  #Nname, .Nname {
+    font-size: var(--font-size-lg);
   }
 }

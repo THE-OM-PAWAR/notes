@@ -1,21 +1,26 @@
 {
     "short_name": "Notes",
-    "name": "Notes",
+    "name": "Notes App - Create and Organize",
     "icons": [
         {
             "src": "Caramel 1.png",
             "sizes": "302x298",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         },
         {
             "src": "Caramel 1_298.png",
             "sizes": "298x298",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
         }
     ],
     "start_url": "index.html",
-    "background_color": "#ffffff",
-    "theme_color": "#ffffff",
+    "background_color": "#f3f1eb",
+    "theme_color": "#eab32c",
     "display": "standalone",
-    "description": "this is a notes taking application "
+    "description": "A modern, responsive note-taking Progressive Web App. Create, edit, and organize your notes with ease.",
+    "orientation": "portrait",
+    "scope": "/",
+    "categories": ["productivity", "utilities"]
 }

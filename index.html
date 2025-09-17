@@ -4,104 +4,159 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A modern, responsive note-taking Progressive Web App. Create, edit, and organize your notes with ease." />
+    <meta name="theme-color" content="#eab32c" />
     
-    <link rel="shortcut icon" href="Caramel 1.png" type="image/x-icon" />
+    <link rel="icon" href="Caramel 1.png" type="image/png" />
+    <link rel="apple-touch-icon" href="Caramel 1.png" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="modal.css" />
-    <link rel="manifest" href="manifest.json">
-    <title>Make note</title>
+    <link rel="manifest" href="manifest.json" />
+    
+    <title>Notes App - Create and Organize Your Notes</title>
   </head>
   <body>
     <header>
-      <img src="Caramel 1.png" alt="img" />
-      <h1>create Notes</h1>
+      <img src="Caramel 1.png" alt="Notes App Logo" />
+      <h1>Notes App</h1>
+      <button type="button" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="theme-icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="theme-icon moon-icon hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
     </header>
-    <input type="submit" value="+" id="add" />
-    <div class="conrtainer" onchange="check()"  id="container">
-      <div id="allNote">
-        
-
-      </div>
-
-      <div id="main2" class="main" hidden>
-        <div class="notePanel2 notePanel" id="notePanel2">
-          <div id="buttons">
-            <button id="cnlBtn2">
-              <svg
-                class="svg"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
-                <path
-                  d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
-                />
-              </svg>
-            </button>
-
-            <button id="createbtn2" onclick="create2(this)">
-              <svg
-                class="svg"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
-                <path
-                  d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
-                />
-              </svg>
-            </button>
+    
+    <main>
+      <button type="button" id="add" aria-label="Add new note" title="Add new note">
+        <span>+</span>
+      </button>
+      
+        <div class="container" id="container">
+          <!-- Search Bar -->
+          <div class="search-container">
+            <input 
+              type="text" 
+              id="searchInput" 
+              placeholder="Search notes..." 
+              aria-label="Search notes"
+            />
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="M21 21l-4.35-4.35"></path>
+            </svg>
           </div>
-          <p id="times">time</p>
-          <h3 class="Nname">title</h3>
-          <p class="notepera" contenteditable="true"></p>
+          
+          <section id="allNote" aria-label="All notes">
+            <!-- Notes will be dynamically loaded here -->
+          </section>
+
+          <!-- Edit Note Panel -->
+          <section id="main2" class="main edit-panel" hidden aria-label="Edit note">
+            <div class="notePanel2 notePanel" id="notePanel2">
+              <div id="buttons" class="button-group">
+                <button id="cnlBtn2" type="button" aria-label="Cancel editing" title="Cancel">
+                  <svg
+                    class="svg"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+                    />
+                  </svg>
+                </button>
+
+                <button id="createbtn2" type="button" aria-label="Save changes" title="Save">
+                  <svg
+                    class="svg"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              
+              <span id="times" class="timestamp">Last modified</span>
+              <h2 class="Nname" contenteditable="true" aria-label="Note title">Untitled</h2>
+              <div class="notepera" contenteditable="true" aria-label="Note content" role="textbox"></div>
+            </div>
+          </section>
+
+          <!-- Create Note Panel -->
+          <section id="main" class="main create-panel" hidden aria-label="Create new note">
+            <div class="notePanel" id="notePanel">
+              <div id="buttons" class="button-group">
+                <button id="cnlBtn" type="button" aria-label="Cancel" title="Cancel">
+                  <svg
+                    class="svg"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
+                    />
+                  </svg>
+                </button>
+
+                <button id="createbtn" type="button" aria-label="Create note" title="Create">
+                  <svg
+                    class="svg"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              
+              <input 
+                type="text" 
+                name="noteName" 
+                id="Nname" 
+                placeholder="Enter note title..." 
+                aria-label="Note title"
+                required
+              />
+              
+              <textarea
+                name="content"
+                id="value"
+                placeholder="Start writing your note..."
+                aria-label="Note content"
+                required
+              ></textarea>
+            </div>
+          </section>
+          
+          <!-- Empty State -->
+          <section class="main empty-state" id="main__" hidden aria-label="No notes">
+            <div class="empty-content">
+              <h2>No Notes Yet</h2>
+              <p>Click the + button to create your first note!</p>
+            </div>
+          </section>
         </div>
-      </div>
-
-      <div id="main" class="main" hidden>
-        <div class="notePanel" id="notePanel">
-          <div id="buttons">
-            <button id="cnlBtn">
-              <svg
-                class="svg"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
-                <path
-                  d="M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z"
-                />
-              </svg>
-            </button>
-
-            <button id="createbtn">
-              <svg
-                class="svg"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
-                <path
-                  d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"
-                />
-              </svg>
-            </button>
-          </div>
-          <input type="text" name="noteName" id="Nname" placeholder="Title" />
-          <textarea
-            name="content"
-            id="value"
-            class="no-outline"
-            cols="100%"
-            rows="100%"
-          ></textarea>
-        </div>
-      </div>
-      <div class="main" id="main__" hidden >
-          Add Some <br> Notes
-      </div>
-    </div>
-
+    </main>
 
     <script src="modal.js"></script>
     <script src="note .js"></script>
